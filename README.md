@@ -1,5 +1,14 @@
 # jzwbxx-admin
-基于layui&layuimini + SSH 后台管理系统
+基于layui&layuimini + Freemarker + SSH 后台管理系统框架
+
+## 功能
+- 登录/注销
+- 用户管理
+- 角色管理
+- 菜单管理
+- 存储插件管理
+- 系统操作日志
+- 权限校验
 
 ## 项目结构
 ```shell
