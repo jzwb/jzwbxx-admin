@@ -1,1 +1,1 @@
-jzwb-admin
+jzwbxx-admin
