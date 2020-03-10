@@ -31,6 +31,6 @@
 │   ├── application-dev.yml
 │   ├── application-prod.yml
 │   ├── setting.properties
-├── pom.xml                                    //Maven以来
+├── pom.xml                                    //Maven依赖
 ├── README.md
 ```
