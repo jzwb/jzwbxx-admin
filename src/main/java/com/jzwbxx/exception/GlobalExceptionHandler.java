@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * ClassName  : GlobalExceptionHandler
- * Description  :
+ * 全局异常处理
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
-    private final static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
@@ -22,7 +19,7 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         if (e instanceof ServiceException) {
             return Message.error("服务异常");
-        }else {
+        } else {
             return Message.error("系统异常");
         }
     }

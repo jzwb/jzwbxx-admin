@@ -3,13 +3,15 @@ package com.jzwbxx.converter;
 import org.apache.commons.beanutils.converters.AbstractConverter;
 
 /**
- * 枚举类型转换
+ * 转换器 - 枚举
  */
 public class EnumConverter extends AbstractConverter {
 
 	private final Class<?> enumClass;//枚举类型
 
 	/**
+	 * 初始化对象
+	 *
 	 * @param enumClass 枚举类型
 	 */
 	public EnumConverter(Class<?> enumClass) {
@@ -17,6 +19,8 @@ public class EnumConverter extends AbstractConverter {
 	}
 
 	/**
+	 * 初始化对象
+	 *
 	 * @param enumClass    枚举类型
 	 * @param defaultValue 默认值
 	 */

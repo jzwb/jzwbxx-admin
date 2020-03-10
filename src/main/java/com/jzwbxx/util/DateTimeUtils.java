@@ -48,7 +48,7 @@ public class DateTimeUtils extends DateUtils {
 	 */
 	public static String getFormatDate(Date date, String xFormat) {
 		date = date == null ? new Date() : date;
-		xFormat = StringUtils.isNotEmpty(xFormat) == true ? xFormat : FULL_DATE_FORMAT;
+		xFormat = StringUtils.isNotEmpty(xFormat) ? xFormat : FULL_DATE_FORMAT;
 		SimpleDateFormat sdf = new SimpleDateFormat(xFormat);
 		return sdf.format(date);
 	}
@@ -65,20 +65,18 @@ public class DateTimeUtils extends DateUtils {
 		if ((dateX == null) || (dateY == null)) {
 			return 0;
 		}
-
 		int dayX = (int) (dateX.getTime() / (60 * 60 * 1000 * 24));
 		int dayY = (int) (dateY.getTime() / (60 * 60 * 1000 * 24));
-
 		return dayX > dayY ? dayX - dayY : dayY - dayX;
 	}
 
 	/**
 	 * 处理日期
 	 *
-	 * @param date
-	 * @param clearHour
-	 * @param clearMinute
-	 * @param clearSecond
+	 * @param date        日期
+	 * @param clearHour   清除小时
+	 * @param clearMinute 清除分钟
+	 * @param clearSecond 清除秒
 	 * @return
 	 */
 	public static Date parse(Date date, boolean clearHour, boolean clearMinute, boolean clearSecond) {
@@ -87,7 +85,6 @@ public class DateTimeUtils extends DateUtils {
 		}
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
-
 		if (clearHour) {
 			calendar.set(Calendar.HOUR_OF_DAY, 0);
 		}

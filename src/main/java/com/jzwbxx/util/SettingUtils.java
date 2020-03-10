@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SettingUtils {
-    private SettingUtils(){}
+    private SettingUtils() {
+    }
 
     public static Setting setting;
 

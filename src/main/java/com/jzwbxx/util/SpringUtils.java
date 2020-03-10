@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 @Lazy(false)
 public final class SpringUtils implements ApplicationContextAware, DisposableBean {
 
-	/** applicationContext */
+	/**
+	 * applicationContext
+	 */
 	private static ApplicationContext applicationContext;
 
 	/**
@@ -33,8 +35,8 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 
 	/**
 	 * 获取applicationContext
-	 * 
-	 * @return applicationContext
+	 *
+	 * @return
 	 */
 	public static ApplicationContext getApplicationContext() {
 		return applicationContext;
@@ -42,12 +44,12 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 
 	/**
 	 * 获取实例
-	 * 
+	 *
 	 * @param name Bean名称
 	 * @return
 	 */
 	public static Object getBean(String name) {
-		if(StringUtils.isBlank(name)){
+		if (StringUtils.isBlank(name)) {
 			return null;
 		}
 		return applicationContext.getBean(name);
@@ -55,10 +57,10 @@ public final class SpringUtils implements ApplicationContextAware, DisposableBea
 
 	/**
 	 * 获取实例
-	 * 
+	 *
 	 * @param name Bean名称
 	 * @param type Bean类型
-	 * @return 实例
+	 * @return
 	 */
 	public static <T> T getBean(String name, Class<T> type) {
 		return applicationContext.getBean(name, type);
