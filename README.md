@@ -1,3 +1,6 @@
+# jzwbxx-admin
+基于layui&layuimini + SSH 后台管理系统
+
 ## 项目结构
 ```shell
 ├── src/main/java                               //源代码
