@@ -11,8 +11,7 @@ spring:
       ddl-auto: none
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
-    show-sql: true
-    format-sql: true
+    show-sql: false
   freemarker:
     suffix: .ftl
     template-loader-path: classpath:/templates/
@@ -23,8 +22,6 @@ spring:
     charset: UTF-8
     content-type: text/html
     enabled: true
-    expose-request-attributes: false
-    expose-session-attributes: false
     expose-spring-macro-helpers: true
     prefer-file-system-access: true
     settings:
@@ -35,8 +32,3 @@ spring:
       time_format: HH:mm:ss
       datetime_format: yyyy-MM-dd HH:mm:ss
       tag_syntax: auto_detect
-  http:
-    multipart:
-      max-file-size: 100Mb
-      max-request-size: 100Mb
-

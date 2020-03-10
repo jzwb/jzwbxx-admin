@@ -103,9 +103,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<fork>true</fork><!-- 如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.flywaydb</groupId>
@@ -119,37 +116,6 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-            <!-- mybatis generator 自动生成代码插件 -->
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
-                <dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.45</version>
-					</dependency>
-                    <dependency>
-                        <groupId>org.mybatis.generator</groupId>
-                        <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.3.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>tk.mybatis</groupId>
-                        <artifactId>mapper</artifactId>
-                        <version>4.1.5</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <!-- 自动生成的配置 -->
-                    <configurationFile>${basedir}/src/main/resources/generator/generator.xml</configurationFile>
-                    <!-- 覆盖已经生成的 -->
-                    <overwrite>true</overwrite>
-                    <!--允许移动生成的文件 -->
-                    <verbose>true</verbose>
-                </configuration>
-            </plugin>
 		</plugins>
 	</build>
 </project>
