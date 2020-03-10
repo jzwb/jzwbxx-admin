@@ -12,52 +12,100 @@ import java.util.List;
  */
 public class Pageable implements Serializable {
 
-	private static final long serialVersionUID = -3930180379790344299L;
+	private static final int DEFAULT_PAGE_NUMBER = 1;//默认页码
+	private static final int DEFAULT_PAGE_SIZE = 50;//默认每页记录数
+	private static final int MAX_PAGE_SIZE = 1000;//最大每页记录数
 
-	/** 默认页码 */
-	private static final int DEFAULT_PAGE_NUMBER = 1;
+	private int pageNumber = DEFAULT_PAGE_NUMBER;//页码
+	private int pageSize = DEFAULT_PAGE_SIZE;//每页记录数
+	private String searchProperty;//搜索属性
+	private String searchValue;//搜索值
+	private String orderProperty;//排序属性
+	private Order.Direction orderDirection;//排序方向
+	private List<Filter> filters = new ArrayList<>();//筛选
+	private List<Order> orders = new ArrayList<>();//排序
 
-	/** 默认每页记录数 */
-	private static final int DEFAULT_PAGE_SIZE = 50;
+	public int getPageNumber() {
+		return pageNumber;
+	}
 
-	/** 最大每页记录数 */
-	private static final int MAX_PAGE_SIZE = 1000;
+	public void setPageNumber(int pageNumber) {
+		if (pageNumber < 1) {
+			pageNumber = DEFAULT_PAGE_NUMBER;
+		}
+		this.pageNumber = pageNumber;
+	}
 
-	/** 页码 */
-	private int pageNumber = DEFAULT_PAGE_NUMBER;
+	public int getPageSize() {
+		return pageSize;
+	}
 
-	/** 每页记录数 */
-	private int pageSize = DEFAULT_PAGE_SIZE;
+	public void setPageSize(int pageSize) {
+		if (pageSize < 1 || pageSize > MAX_PAGE_SIZE) {
+			pageSize = DEFAULT_PAGE_SIZE;
+		}
+		this.pageSize = pageSize;
+	}
 
-	/** 搜索属性 */
-	private String searchProperty;
+	public String getSearchProperty() {
+		return searchProperty;
+	}
 
-	/** 搜索值 */
-	private String searchValue;
+	public void setSearchProperty(String searchProperty) {
+		this.searchProperty = searchProperty;
+	}
 
-	/** 排序属性 */
-	private String orderProperty;
+	public String getSearchValue() {
+		return searchValue;
+	}
 
-	/** 排序方向 */
-	private Order.Direction orderDirection;
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
+	}
 
-	/** 筛选 */
-	private List<Filter> filters = new ArrayList<Filter>();
+	public String getOrderProperty() {
+		return orderProperty;
+	}
 
-	/** 排序 */
-	private List<Order> orders = new ArrayList<Order>();
+	public void setOrderProperty(String orderProperty) {
+		this.orderProperty = orderProperty;
+	}
+
+	public Order.Direction getOrderDirection() {
+		return orderDirection;
+	}
+
+	public void setOrderDirection(Order.Direction orderDirection) {
+		this.orderDirection = orderDirection;
+	}
+
+	public List<Filter> getFilters() {
+		return filters;
+	}
+
+	public void setFilters(List<Filter> filters) {
+		this.filters = filters;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	/**
-	 * 初始化一个新创建的Pageable对象
+	 * 初始化对象
 	 */
 	public Pageable() {
 	}
 
 	/**
-	 * 初始化一个新创建的Pageable对象
-	 * 
+	 * 初始化对象
+	 *
 	 * @param pageNumber 页码
-	 * @param pageSize 每页记录数
+	 * @param pageSize   每页记录数
 	 */
 	public Pageable(Integer pageNumber, Integer pageSize) {
 		if (pageNumber != null && pageNumber >= 1) {
@@ -66,156 +114,6 @@ public class Pageable implements Serializable {
 		if (pageSize != null && pageSize >= 1 && pageSize <= MAX_PAGE_SIZE) {
 			this.pageSize = pageSize;
 		}
-	}
-
-	/**
-	 * 获取页码
-	 * 
-	 * @return 页码
-	 */
-	public int getPageNumber() {
-		return pageNumber;
-	}
-
-	/**
-	 * 设置页码
-	 * 
-	 * @param pageNumber 页码
-	 */
-	public void setPageNumber(int pageNumber) {
-		if (pageNumber < 1) {
-			pageNumber = DEFAULT_PAGE_NUMBER;
-		}
-		this.pageNumber = pageNumber;
-	}
-
-	/**
-	 * 获取每页记录数
-	 * 
-	 * @return 每页记录数
-	 */
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	/**
-	 * 设置每页记录数
-	 * 
-	 * @param pageSize 每页记录数
-	 */
-	public void setPageSize(int pageSize) {
-		if (pageSize < 1 || pageSize > MAX_PAGE_SIZE) {
-			pageSize = DEFAULT_PAGE_SIZE;
-		}
-		this.pageSize = pageSize;
-	}
-
-	/**
-	 * 获取搜索属性
-	 * 
-	 * @return 搜索属性
-	 */
-	public String getSearchProperty() {
-		return searchProperty;
-	}
-
-	/**
-	 * 设置搜索属性
-	 * 
-	 * @param searchProperty 搜索属性
-	 */
-	public void setSearchProperty(String searchProperty) {
-		this.searchProperty = searchProperty;
-	}
-
-	/**
-	 * 获取搜索值
-	 * 
-	 * @return 搜索值
-	 */
-	public String getSearchValue() {
-		return searchValue;
-	}
-
-	/**
-	 * 设置搜索值
-	 * 
-	 * @param searchValue 搜索值
-	 */
-	public void setSearchValue(String searchValue) {
-		this.searchValue = searchValue;
-	}
-
-	/**
-	 * 获取排序属性
-	 * 
-	 * @return 排序属性
-	 */
-	public String getOrderProperty() {
-		return orderProperty;
-	}
-
-	/**
-	 * 设置排序属性
-	 * 
-	 * @param orderProperty 排序属性
-	 */
-	public void setOrderProperty(String orderProperty) {
-		this.orderProperty = orderProperty;
-	}
-
-	/**
-	 * 获取排序方向
-	 * 
-	 * @return 排序方向
-	 */
-	public Order.Direction getOrderDirection() {
-		return orderDirection;
-	}
-
-	/**
-	 * 设置排序方向
-	 * 
-	 * @param orderDirection 排序方向
-	 */
-	public void setOrderDirection(Order.Direction orderDirection) {
-		this.orderDirection = orderDirection;
-	}
-
-	/**
-	 * 获取筛选
-	 * 
-	 * @return 筛选
-	 */
-	public List<Filter> getFilters() {
-		return filters;
-	}
-
-	/**
-	 * 设置筛选
-	 * 
-	 * @param filters 筛选
-	 */
-	public void setFilters(List<Filter> filters) {
-		this.filters = filters;
-	}
-
-	/**
-	 * 获取排序
-	 * 
-	 * @return 排序
-	 */
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	/**
-	 * 设置排序
-	 * 
-	 * @param orders 排序
-	 */
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 
 	@Override
@@ -238,5 +136,4 @@ public class Pageable implements Serializable {
 	public int hashCode() {
 		return new HashCodeBuilder(17, 37).append(getPageNumber()).append(getPageSize()).append(getSearchProperty()).append(getSearchValue()).append(getOrderProperty()).append(getOrderDirection()).append(getFilters()).append(getOrders()).toHashCode();
 	}
-
 }

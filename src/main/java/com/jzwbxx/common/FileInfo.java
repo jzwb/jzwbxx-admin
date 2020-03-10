@@ -11,28 +11,36 @@ public class FileInfo {
 	 * 文件类型
 	 */
 	public enum FileType {
-		image;//图片
+		image("图片");
+
+		FileType(String desc) {
+			this.desc = desc;
+		}
+
+		private String desc;
+
+		public String getDesc() {
+			return desc;
+		}
 	}
 
 	/**
 	 * 排序类型
 	 */
 	public enum OrderType {
+		name("名称"),
+		size("大小"),
+		type("类型");
 
-		/**
-		 * 名称
-		 */
-		name,
+		OrderType(String desc) {
+			this.desc = desc;
+		}
 
-		/**
-		 * 大小
-		 */
-		size,
+		private String desc;
 
-		/**
-		 * 类型
-		 */
-		type
+		public String getDesc() {
+			return desc;
+		}
 	}
 
 	private String name;//名称

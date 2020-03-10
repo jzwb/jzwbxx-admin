@@ -10,54 +10,55 @@ import java.io.Serializable;
  */
 public class Order implements Serializable {
 
+	private static final Direction DEFAULT_DIRECTION = Direction.desc;//默认方向
+
 	/**
 	 * 方向
 	 */
 	public enum Direction {
 
-		/**
-		 * 递增
-		 */
-		asc,
+		asc("递增"),
+		desc("递减");
 
-		/**
-		 * 递减
-		 */
-		desc;
+		Direction(String description) {
+			this.description = description;
+		}
 
-		/**
-		 * 从String中获取Direction
-		 *
-		 * @param value 值
-		 * @return String对应的Direction
-		 */
-		public static Direction fromString(String value) {
-			return Direction.valueOf(value.toLowerCase());
+		public String description;
+
+		public String getDescription() {
+			return description;
 		}
 	}
 
-	/**
-	 * 默认方向
-	 */
-	private static final Direction DEFAULT_DIRECTION = Direction.desc;
+	private String property;//属性
+	private Direction direction = DEFAULT_DIRECTION;//方向
+
+	public String getProperty() {
+		return property;
+	}
+
+	public void setProperty(String property) {
+		this.property = property;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
 
 	/**
-	 * 属性
-	 */
-	private String property;
-
-	/**
-	 * 方向
-	 */
-	private Direction direction = DEFAULT_DIRECTION;
-
-	/**
-	 * 初始化一个新创建的Order对象
+	 * 初始化对象
 	 */
 	public Order() {
 	}
 
 	/**
+	 * 初始化对象
+	 *
 	 * @param property  属性
 	 * @param direction 方向
 	 */
@@ -70,7 +71,7 @@ public class Order implements Serializable {
 	 * 返回递增排序
 	 *
 	 * @param property 属性
-	 * @return 递增排序
+	 * @return
 	 */
 	public static Order asc(String property) {
 		return new Order(property, Direction.asc);
@@ -80,46 +81,10 @@ public class Order implements Serializable {
 	 * 返回递减排序
 	 *
 	 * @param property 属性
-	 * @return 递减排序
+	 * @return
 	 */
 	public static Order desc(String property) {
 		return new Order(property, Direction.desc);
-	}
-
-	/**
-	 * 获取属性
-	 *
-	 * @return 属性
-	 */
-	public String getProperty() {
-		return property;
-	}
-
-	/**
-	 * 设置属性
-	 *
-	 * @param property 属性
-	 */
-	public void setProperty(String property) {
-		this.property = property;
-	}
-
-	/**
-	 * 获取方向
-	 *
-	 * @return 方向
-	 */
-	public Direction getDirection() {
-		return direction;
-	}
-
-	/**
-	 * 设置方向
-	 *
-	 * @param direction 方向
-	 */
-	public void setDirection(Direction direction) {
-		this.direction = direction;
 	}
 
 	@Override
@@ -138,5 +103,4 @@ public class Order implements Serializable {
 	public int hashCode() {
 		return new HashCodeBuilder(17, 37).append(getProperty()).append(getDirection()).toHashCode();
 	}
-
 }

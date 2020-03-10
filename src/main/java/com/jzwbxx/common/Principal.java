@@ -10,15 +10,6 @@ public class Principal implements Serializable {
 	private Long id;
 	private String username;//用户名
 
-	/**
-	 * @param id
-	 * @param username 用户名
-	 */
-	public Principal(Long id, String username) {
-		this.id = id;
-		this.username = username;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -32,6 +23,17 @@ public class Principal implements Serializable {
 	}
 
 	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * 初始化对象
+	 *
+	 * @param id
+	 * @param username 用户名
+	 */
+	public Principal(Long id, String username) {
+		this.id = id;
 		this.username = username;
 	}
 
