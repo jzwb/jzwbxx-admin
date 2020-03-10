@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分页信息
+ * 通用 - 分页信息
  */
 public class Pageable implements Serializable {
 

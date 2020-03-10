@@ -1,7 +1,7 @@
 package com.jzwbxx.common;
 
 /**
- * 公共参数
+ * 通用 - 公共参数
  */
 public final class CommonAttributes {
 

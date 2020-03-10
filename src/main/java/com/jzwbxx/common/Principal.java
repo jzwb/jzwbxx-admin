@@ -3,7 +3,7 @@ package com.jzwbxx.common;
 import java.io.Serializable;
 
 /**
- * 身份信息
+ * 通用 - 身份信息
  */
 public class Principal implements Serializable {
 

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 响应消息
+ * 通用 - 消息
  */
 public class Message implements Serializable {
 

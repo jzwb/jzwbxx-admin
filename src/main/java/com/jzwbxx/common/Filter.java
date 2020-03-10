@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.io.Serializable;
 
 /**
- * 筛选
+ * 通用 - 筛选
  */
 public class Filter implements Serializable {
 

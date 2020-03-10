@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 分页
+ * 通用 - 分页
  */
 public class Page<T> implements Serializable {
 

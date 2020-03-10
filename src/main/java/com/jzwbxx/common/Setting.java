@@ -9,7 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 /**
- * 配置
+ * 通用 - 配置
  */
 @Configuration
 @Component

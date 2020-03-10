@@ -3,7 +3,7 @@ package com.jzwbxx.common;
 import java.util.Date;
 
 /**
- * 文件信息
+ * 通用 - 文件信息
  */
 public class FileInfo {
 

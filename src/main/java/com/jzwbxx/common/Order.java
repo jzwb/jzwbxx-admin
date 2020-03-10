@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.io.Serializable;
 
 /**
- * 排序
+ * 通用 - 排序
  */
 public class Order implements Serializable {
 

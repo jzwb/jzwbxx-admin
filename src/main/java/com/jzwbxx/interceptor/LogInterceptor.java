@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 		String operator = adminService.getCurrentUsername();
 		String ip = Tools.getIp(request);
 		Map<String, String[]> parameterMap = request.getParameterMap();
-		StringBuffer parameter = new StringBuffer();
+		StringBuilder parameter = new StringBuilder();
 		if (parameterMap != null) {
 			for (Entry<String, String[]> entry : parameterMap.entrySet()) {
 				String parameterName = entry.getKey();
@@ -41,7 +42,7 @@ public class LogInterceptor extends HandlerInterceptorAdapter {
 					String[] parameterValues = entry.getValue();
 					if (parameterValues != null) {
 						for (String parameterValue : parameterValues) {
-							parameter.append(parameterName + " = " + parameterValue + "\n");
+							parameter.append(parameterName).append(" = ").append(parameterValue).append("\n");
 						}
 					}
 				}

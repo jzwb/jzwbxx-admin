@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 
 /**
- * 配置 - freemarker
+ * 配置 - Freemarker
  */
 @Configuration
 public class FreeMarkerConfig {
@@ -19,10 +19,10 @@ public class FreeMarkerConfig {
 
     @PostConstruct
     public void setSharedVariable() {
-    	try {
+        try {
             configuration.setSharedVariable("flashMessage", flashMessageDirective);
         } catch (Exception e) {
-			e.printStackTrace();
-		}
+            e.printStackTrace();
+        }
     }
 }
