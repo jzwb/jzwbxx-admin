@@ -75,10 +75,10 @@ CREATE TABLE `t_menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`) VALUES (1, '2020-03-04 22:07:31', '2020-03-04 22:07:34', '系统管理', '', 'fa fa-gears', '_self', 0, ',', NULL);
-INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (2, '2020-03-04 22:08:44', '2020-03-04 22:08:50', '用户管理', '/admin/admin/index/', 'fa fa-gears', '_self', 1, ',1,', 1, 'admin:admin');
-INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (3, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '角色管理', '/admin/role/index/', 'fa fa-gears', '_self', 1, ',1,', 1, 'admin:role');
-INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (4, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '菜单管理', '/admin/menu/index/', 'fa fa-gears', '_self', 1, ',1,', 1, 'admin:menu');
-INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (5, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '存储插件管理', '/admin/storage_plugin/index/', 'fa fa-gears', '_self', 1, ',1,', 1, 'admin:storage_plugin');
+INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (2, '2020-03-04 22:08:44', '2020-03-04 22:08:50', '用户管理', '/admin/admin/index/', 'fa fa-users', '_self', 1, ',1,', 1, 'admin:admin');
+INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (3, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '角色管理', '/admin/role/index/', 'fa fa-users', '_self', 1, ',1,', 1, 'admin:role');
+INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (4, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '菜单管理', '/admin/menu/index/', 'fa fa-window-maximize', '_self', 1, ',1,', 1, 'admin:menu');
+INSERT INTO `zhifu_admin`.`t_menu`(`id`, `create_date`, `modify_date`, `title`, `href`, `icon`, `target`, `grade`, `tree_path`, `parent`, `authority`) VALUES (5, '2020-03-04 22:09:34', '2020-03-04 22:09:42', '存储插件管理', '/admin/storage_plugin/index/', 'fa fa-align-justify', '_self', 1, ',1,', 1, 'admin:storage_plugin');
 
 ---------------------------- 插件配置
 

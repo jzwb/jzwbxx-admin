@@ -20,4 +20,6 @@ public interface MenuService extends BaseService<Menu, Long> {
      * @return
      */
     List<Menu> findTree();
+
+
 }

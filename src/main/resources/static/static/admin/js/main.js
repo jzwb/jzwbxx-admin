@@ -10,7 +10,7 @@
         // 缓存清理接口
         clearUrl: "/static/admin/json/clear.json",
         // 是否打开hash定位
-        urlHashLocation: true,
+        urlHashLocation: false,
         // 主题默认配置
         bgColorDefault: 0,
         // 是否开启多模块
