@@ -1,6 +1,5 @@
-﻿layui.define(['layer', 'echarts'], function (exports) {
-    var $ = layui.jquery,
-        layer = layui.layer,
+﻿layui.define(['common', 'layer', 'echarts'], function (exports) {
+    var $ = layui.$,
         echarts = layui.echarts;
     //日志分析
     var logAnalysis = function(){

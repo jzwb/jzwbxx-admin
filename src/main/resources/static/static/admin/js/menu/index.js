@@ -1,4 +1,4 @@
-﻿layui.define(['table', 'treetable'], function (exports) {
+﻿layui.define(['common', 'table', 'treetable'], function (exports) {
     var $ = layui.jquery;
     var table = layui.table;
     var treetable = layui.treetable;

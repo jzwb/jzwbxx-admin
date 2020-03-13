@@ -1,5 +1,5 @@
-﻿layui.define(['form', 'table'], function (exports) {
-    var $ = layui.jquery,
+﻿layui.define(['common', 'form', 'table'], function (exports) {
+    var $ = layui.$,
         form = layui.form,
         table = layui.table;
     //列表

@@ -1,4 +1,4 @@
-﻿layui.define(['form'], function (exports) {
+﻿layui.define(['common', 'form'], function (exports) {
     var form = layui.form,
         layer = layui.layer,
         $ = layui.$;

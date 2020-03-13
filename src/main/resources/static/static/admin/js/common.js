@@ -1,7 +1,27 @@
-﻿layui.use('upload', function(){
-    var upload = layui.upload,
-        $ = layui.$;
+﻿layui.define(["jquery","upload"], function(exports){
+    layui.$.ajaxSetup({
+        complete:function(xhr,status){
+            ajaxComplete(xhr);
+        }
+    });
+    layui.jquery.ajaxSetup({
+        complete:function(xhr,status){
+            ajaxComplete(xhr);
+        }
+    });
+    var ajaxComplete = function(xhr){
+        var loginStatus = xhr.getResponseHeader("loginStatus");
+        if(loginStatus === 'accessDenied'){
+            layer.msg("登录超时", {time: 2000}, function(){
+                window.location.reload();
+            });
+        }
+    };
 
+    var $ = layui.$,
+        upload = layui.upload;
+
+    //文件上传
     //使用时dom（后续优化）
     /*<div class="layui-form-item">
         <label class="layui-form-label">图片</label>
@@ -44,4 +64,5 @@
         return instance;
     }();
 
+    exports('common', {});
 });

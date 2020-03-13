@@ -1,4 +1,4 @@
-﻿layui.define(['form', 'table'], function (exports) {
+﻿layui.define(['common', 'form', 'table'], function (exports) {
     var $ = layui.jquery,
         form = layui.form,
         table = layui.table;

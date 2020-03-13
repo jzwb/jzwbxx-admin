@@ -1,5 +1,5 @@
-﻿layui.define(['jquery', 'layer', 'miniAdmin', 'miniMenu'], function (exports) {
-    var $ = layui.jquery,
+﻿layui.define(['common', 'jquery', 'layer', 'miniAdmin', 'miniMenu'], function (exports) {
+    var $ = layui.$,
         layer = layui.layer,
         miniAdmin = layui.miniAdmin,
         miniMenu = layui.miniMenu;
