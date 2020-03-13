@@ -46,3 +46,23 @@
 ├── pom.xml                                    //Maven依赖
 ├── README.md
 ```
+
+## 依赖版本说明
+
+groupId | artifactId |  version  
+-|-|-
+org.springframework.boot | spring-boot-starter-web | 2.0.0.RELEASE |
+org.springframework.boot | spring-boot-starter-data-jpa | 2.0.0.RELEASE |
+org.springframework.boot | spring-boot-starter-freemarker | 2.0.0.RELEASE |
+org.springframework.boot | spring-boot-starter-cache | 2.0.0.RELEASE |
+net.sf.ehcache | ehcache | 2.10.4 |
+org.apache.shiro | shiro-spring | 1.4.0 |
+mysql | mysql-connector-java | 5.1.45 |
+com.alibaba | druid-spring-boot-starter | 1.1.21 |
+com.alibaba | fastjson | 1.2.61 |
+commons-io | commons-io | 2.5 |
+commons-codec | commons-codec | 1.10 |
+commons-fileupload | commons-fileupload | 1.3.1 |
+commons-lang | commons-lang | 2.6 |
+org.apache.commons | commons-lang3 | 3.9 |
+org.flywaydb | flyway-core | 4.2.0 |
