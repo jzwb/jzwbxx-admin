@@ -35,11 +35,14 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+        shiroFilterFactoryBean.setLoginUrl("/admin/login/");
+        shiroFilterFactoryBean.setSuccessUrl("/admin/main/");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/admin/common/unauthorized/");
         Map<String, Filter> filters = new HashMap<>();
         filters.put("authc", new AuthenticationFilter());
 
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/admin/login/", "anon");
+        filterChainDefinitionMap.put("/admin/login/", "authc");
         filterChainDefinitionMap.put("/admin/logout/", "logout");
         filterChainDefinitionMap.put("/admin/admin/**", "perms[admin:admin]");
         filterChainDefinitionMap.put("/admin/role/**", "perms[admin:role]");

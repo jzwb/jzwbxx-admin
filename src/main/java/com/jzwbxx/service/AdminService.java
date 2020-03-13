@@ -39,4 +39,10 @@ public interface AdminService extends BaseService<Admin, Long> {
      * @return
      */
     String getCurrentUsername();
+
+    /**
+     * 是否登录
+     * @return
+     */
+    boolean isLogin();
 }

@@ -10,7 +10,11 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,5 +68,13 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin, Long> implements Ad
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean isLogin() {
+        RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+        String loginStatus = (String) request.getSession().getAttribute(Admin.ADMIN_LOGIN_STATUS);
+        return Boolean.TRUE.toString().equals(loginStatus);
     }
 }

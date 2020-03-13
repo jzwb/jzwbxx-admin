@@ -40,7 +40,7 @@ public class CommonController {
         List<Map<String, Object>> mapList = new ArrayList<>();
         for (Menu menu : menus) {
             String authority = menu.getAuthority();
-            if(StringUtils.isNotBlank(authority) && !subject.isPermitted(menu.getAuthority())){
+            if (StringUtils.isNotBlank(authority) && !subject.isPermitted(menu.getAuthority())) {
                 continue;
             }
             Map<String, Object> map = new HashMap<>();
@@ -57,5 +57,16 @@ public class CommonController {
             mapList.add(map);
         }
         return Message.success("成功", mapList);
+    }
+
+    /**
+     * 无权
+     *
+     * @return
+     */
+    @GetMapping("/unauthorized")
+    @ResponseBody
+    public Message unauthorized() {
+        return Message.error("无权访问");
     }
 }
