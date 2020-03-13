@@ -20,7 +20,7 @@ public class LogDaoImpl extends BaseDaoImpl<Log, Long> implements LogDao {
         if (StringUtils.isBlank(startDate) || StringUtils.isBlank(endDate)) {
             return Collections.emptyList();
         }
-        String sql = "SELECT DATE_FORMAT(create_date,'%Y-%m-%d') AS date,count(1) AS c FROM t_log WHERE create_date >= ? AND create_date <= ? GROUP BY date ORDER BY c DESC";
+        String sql = "SELECT DATE_FORMAT(create_date,'%Y-%m-%d') AS date,count(1) AS c FROM sys_log WHERE create_date >= ? AND create_date <= ? GROUP BY date ORDER BY c DESC";
         Query query = entityManager.createNativeQuery(sql).setParameter(1, startDate).setParameter(2, endDate);
         return query.getResultList();
     }
@@ -30,7 +30,7 @@ public class LogDaoImpl extends BaseDaoImpl<Log, Long> implements LogDao {
         if (StringUtils.isBlank(startDate) || StringUtils.isBlank(endDate)) {
             return Collections.emptyList();
         }
-        String sql = "SELECT DATE_FORMAT(create_date,'%Y-%m-%d') AS date,count(DISTINCT ip) AS c FROM t_log WHERE create_date >= ? AND create_date <= ? GROUP BY date ORDER BY c DESC";
+        String sql = "SELECT DATE_FORMAT(create_date,'%Y-%m-%d') AS date,count(DISTINCT ip) AS c FROM sys_log WHERE create_date >= ? AND create_date <= ? GROUP BY date ORDER BY c DESC";
         Query query = entityManager.createNativeQuery(sql).setParameter(1, startDate).setParameter(2, endDate);
         return query.getResultList();
     }

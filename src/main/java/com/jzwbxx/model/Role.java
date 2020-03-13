@@ -20,7 +20,7 @@ import java.util.Set;
  * Entity - 角色
  */
 @Entity
-@Table(name = "t_role")
+@Table(name = "sys_role")
 public class Role extends BaseEntity {
 
 	private String name;//名称
@@ -62,7 +62,7 @@ public class Role extends BaseEntity {
 	}
 
 	@ElementCollection
-	@CollectionTable(name = "t_role_authority")
+	@CollectionTable(name = "sys_role_authority")
 	public List<String> getAuthorities() {
 		return authorities;
 	}

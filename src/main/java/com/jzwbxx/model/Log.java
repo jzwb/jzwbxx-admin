@@ -9,7 +9,7 @@ import javax.persistence.Table;
  * Entity - 日志
  */
 @Entity
-@Table(name = "t_log")
+@Table(name = "sys_log")
 public class Log extends BaseEntity {
 
 	public static final String LOG_CONTENT_ATTRIBUTE_NAME = Log.class.getName() + ".CONTENT";//日志内容"属性名称

@@ -15,7 +15,7 @@ import java.util.Map;
  * Entity - 插件配置
  */
 @Entity
-@Table(name = "t_plugin_config")
+@Table(name = "sys_plugin_config")
 public class PluginConfig extends OrderEntity {
 
 	private String pluginId;//插件ID
@@ -41,7 +41,7 @@ public class PluginConfig extends OrderEntity {
 	}
 
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "t_plugin_config_attribute")
+	@CollectionTable(name = "sys_plugin_config_attribute")
 	@MapKeyColumn(name = "name", length = 100)
 	public Map<String, String> getAttributes() {
 		return attributes;

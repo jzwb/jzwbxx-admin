@@ -18,7 +18,7 @@ import java.util.List;
  *  Entity - 菜单
  */
 @Entity
-@Table(name = "t_menu")
+@Table(name = "sys_menu")
 public class Menu extends OrderEntity {
 
     public static final String TREE_PATH_SEPARATOR = ",";//树路径分隔符

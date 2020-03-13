@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ import java.util.Set;
  *  Entity - 管理员
  */
 @Entity
-@Table(name = "t_admin")
+@Table(name = "sys_admin")
 public class Admin extends BaseEntity {
 
     public static final String ADMIN_LOGIN_STATUS = "admin_login_status";//后台登录状态
@@ -70,9 +71,9 @@ public class Admin extends BaseEntity {
         this.email = email;
     }
 
-    /*@NotEmpty*/
+    @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "t_admin_role")
+    @JoinTable(name = "sys_admin_role")
     public Set<Role> getRoles() {
         return roles;
     }
