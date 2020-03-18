@@ -57,7 +57,6 @@
 <script src="/static/admin/plugins/jquery-3.4.1.min.js" charset="utf-8"></script>
 <script src="/static/admin/plugins/layui/layui.js" charset="utf-8"></script>
 <script src="/static/admin/plugins/jquery.particleground.min.js" charset="utf-8"></script>
-static/
 <script>
     // 粒子线条背景
     $(document).ready(function(){
@@ -66,11 +65,27 @@ static/
             lineColor:'#5cbdaa'
         });
     });
-    layui.config({
-        base : "/static/admin/js/"
-    }).use([], function () {
-        <@flashMessage/>
-    });
+
+    //iframe登陆刷新
+    if(window.parent !== window){
+        var checkFlag = false;
+        setInterval(function(){
+            if(checkFlag){
+               return;
+            }
+            checkFlag = true;
+            $.ajax({
+                method:"get",
+                url:"/admin/login/status/",
+                success:function (result) {
+                    checkFlag = false;
+                    if(result.type === 'success' && result.data){
+                        window.location.reload();
+                    }
+                }
+            })
+        },1000);
+    }
 </script>
 </body>
 </html>
