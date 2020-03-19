@@ -1,4 +1,5 @@
 ﻿layui.define(["jquery","upload"], function(exports){
+    var topWin = (function(){ var p=window.parent; while(p!=p.window.parent){p=p.window.parent;} return p; })();
     layui.$.ajaxSetup({
         complete:function(xhr,status){
             ajaxComplete(xhr);
@@ -13,7 +14,7 @@
         var loginStatus = xhr.getResponseHeader("loginStatus");
         if(loginStatus === 'accessDenied'){
             layer.msg("登录超时", {time: 2000}, function(){
-                window.location.reload();
+                topWin.location.reload();
             });
         }
     };
@@ -63,6 +64,7 @@
         });
         return instance;
     }();
-
-    exports('common', {});
+    exports('common', {
+        topWin : topWin
+    });
 });

@@ -65,27 +65,13 @@
             lineColor:'#5cbdaa'
         });
     });
-
-    //iframe登陆刷新
-    if(window.parent !== window){
-        var checkFlag = false;
-        setInterval(function(){
-            if(checkFlag){
-               return;
-            }
-            checkFlag = true;
-            $.ajax({
-                method:"get",
-                url:"/admin/login/status/",
-                success:function (result) {
-                    checkFlag = false;
-                    if(result.type === 'success' && result.data){
-                        window.location.reload();
-                    }
-                }
-            })
-        },1000);
-    }
+    layui.config({
+        base: '/static/admin/js/'
+    }).use('common',function(){
+        if(window.parent !== window) {
+            layui.common.topWin.location.reload();
+        }
+    });
 </script>
 </body>
 </html>
