@@ -76,9 +76,10 @@
 
     //退出登录
     $('.login-out').on("click", function () {
-        layer.msg('退出登录成功', function () {
+        layer.msg('退出登录成功');
+        setTimeout(function(){
             window.location = '/admin/logout/';
-        },500);
+        },500)
     });
 
     exports('main', {});
