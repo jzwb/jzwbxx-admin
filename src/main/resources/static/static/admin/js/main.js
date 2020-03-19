@@ -74,10 +74,11 @@
         return newList;
     };
 
+    //退出登录
     $('.login-out').on("click", function () {
         layer.msg('退出登录成功', function () {
             window.location = '/admin/logout/';
-        });
+        },500);
     });
 
     exports('main', {});

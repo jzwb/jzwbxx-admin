@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>menu</title>
+    <title>Admin 后台管理系统 - 菜单管理</title>
     <link rel="stylesheet" href="/static/admin/plugins/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/static/admin/css/public.css" media="all">
     <style>

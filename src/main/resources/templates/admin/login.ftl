@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>后台管理-登陆</title>
+    <title>Admin 后台管理系统 - 登陆</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -37,7 +37,7 @@
         <div class="layui-form login-form">
             <form class="layui-form" action="/admin/login/" method="post">
                 <div class="layui-form-item logo-title">
-                    <h1>LayuiMini后台登录</h1>
+                    <h1>Admin 后台管理系统</h1>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
