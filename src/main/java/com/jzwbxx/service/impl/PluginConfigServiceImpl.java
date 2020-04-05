@@ -21,11 +21,13 @@ public class PluginConfigServiceImpl extends BaseServiceImpl<PluginConfig, Long>
 		super.setBaseDao(pluginConfigDao);
 	}
 
+	@Override
 	@Transactional(readOnly = true)
 	public boolean pluginIdExists(String pluginId) {
 		return pluginConfigDao.pluginIdExists(pluginId);
 	}
 
+	@Override
 	@Transactional(readOnly = true)
 	public PluginConfig findByPluginId(String pluginId) {
 		return pluginConfigDao.findByPluginId(pluginId);

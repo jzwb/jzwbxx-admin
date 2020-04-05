@@ -3,7 +3,7 @@ package com.jzwbxx.exception;
 /**
  * 业务异常
  */
-public class ServiceException extends RuntimeException {
+public class ServiceException extends Exception {
 
 	public ServiceException() {
 		super();

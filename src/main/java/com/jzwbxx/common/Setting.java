@@ -37,6 +37,10 @@ public class Setting {
     private String uploadImagePath;//上传图片路径
     @Value("${uploadImageExtension}")
     private String uploadImageExtension;//上传图片扩展名
+    @Value("${cookieDomain}")
+    private String cookieDomain;//cookie所在域
+    @Value("${cookiePath}")
+    private String cookiePath;//cookie所在路径
 
     public String getSiteUrl() {
         return siteUrl;
@@ -84,6 +88,22 @@ public class Setting {
 
     public void setUploadImageExtension(String uploadImageExtension) {
         this.uploadImageExtension = uploadImageExtension;
+    }
+
+    public String getCookieDomain() {
+        return cookieDomain;
+    }
+
+    public void setCookieDomain(String cookieDomain) {
+        this.cookieDomain = cookieDomain;
+    }
+
+    public String getCookiePath() {
+        return cookiePath;
+    }
+
+    public void setCookiePath(String cookiePath) {
+        this.cookiePath = cookiePath;
     }
 
     public String[] getUploadImageExtensions() {
