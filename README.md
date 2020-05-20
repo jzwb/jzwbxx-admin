@@ -50,7 +50,7 @@
 
 ### 准备环境
 
-jdk8、mysql、redis
+jdk8、maven、mysql、redis
 
 ### 创建数据库
 
