@@ -62,7 +62,7 @@ jdk8、mysql、redis
 
 ### 运行项目
 
-执行MainApplication
+执行MainApplication，访问http://localhost:8080/admin/
 
 ## 依赖版本说明
 
