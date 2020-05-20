@@ -45,8 +45,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         //后台
-        registry.addViewController("/admin/index/").setViewName("/admin/index");//首页
+        registry.addViewController("/admin/").setViewName("redirect:/admin/main/");//页面框架
         registry.addViewController("/admin/main/").setViewName("/admin/main");//页面框架
+        registry.addViewController("/admin/index/").setViewName("/admin/index");//首页
     }
 
     /**

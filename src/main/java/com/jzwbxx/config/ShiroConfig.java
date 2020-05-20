@@ -4,6 +4,7 @@ import com.jzwbxx.shiro.AuthenticationFilter;
 import com.jzwbxx.shiro.AuthenticationRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.filter.authc.LogoutFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +40,11 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSuccessUrl("/admin/main/");
         shiroFilterFactoryBean.setUnauthorizedUrl("/admin/common/unauthorized/");
         Map<String, Filter> filters = new HashMap<>();
+        //登出自定义重定向
+        LogoutFilter logoutFilter = new LogoutFilter();
+        logoutFilter.setRedirectUrl("/admin/");
+        filters.put("logout", logoutFilter);
+        //权限
         filters.put("authc", new AuthenticationFilter());
 
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
