@@ -24,7 +24,7 @@
             <div class="layui-btn-group">
                 <button class="layui-btn layui-btn-sm data-add-btn"> 添加 </button>
             </div>
-            <table id="munu-table" class="layui-table" lay-filter="munu-table"></table>
+            <table id="menu-table" class="layui-table" lay-filter="menu-table"></table>
         </div>
     </div>
 </div>

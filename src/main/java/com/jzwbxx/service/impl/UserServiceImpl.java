@@ -13,6 +13,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +31,9 @@ import java.util.Map;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UserDao userDao;
@@ -116,7 +122,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @Transactional(readOnly = true)
     public User findByEmail(String email) throws ServiceException {
         if (StringUtils.isBlank(email)) {
-            throw new ServiceException("参数错误");
+            return null;
         }
         List<User> users = userDao.findList(null, null, Collections.singletonList(Filter.eq("email", email)), null);
         if (CollectionUtils.isEmpty(users)) {
@@ -132,7 +138,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
     @Transactional(readOnly = true)
     public User findByMobile(String mobile) throws ServiceException {
         if (StringUtils.isBlank(mobile)) {
-            throw new ServiceException("参数错误");
+            return null;
         }
         List<User> users = userDao.findList(null, null, Collections.singletonList(Filter.eq("mobile", mobile)), null);
         if (CollectionUtils.isEmpty(users)) {
@@ -142,5 +148,68 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
             throw new ServiceException("账号异常");
         }
         return users.get(0);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean emailExists(String email) {
+        if (StringUtils.isBlank(email)) {
+            return false;
+        }
+        return userService.count(Filter.eq("email", email)) > 0;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean mobileExists(String mobile) {
+        if (StringUtils.isBlank(mobile)) {
+            return false;
+        }
+        return userService.count(Filter.eq("mobile", mobile)) > 0;
+    }
+
+    @Override
+    public boolean nickNameExists(String nickName) {
+        if (StringUtils.isBlank(nickName)) {
+            return false;
+        }
+        return userService.count(Filter.eq("nickName", nickName)) > 0;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean emailUnique(String oldEmail, String newEmail) {
+        if (StringUtils.equalsIgnoreCase(oldEmail, newEmail)) {
+            return true;
+        }
+        return !userService.emailExists(newEmail);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean mobileUnique(String oldMobile, String newMobile) {
+        if (StringUtils.equalsIgnoreCase(oldMobile, newMobile)) {
+            return true;
+        }
+        return !userService.mobileExists(newMobile);
+    }
+
+    @Override
+    public boolean nickNameUnique(String oldNickName, String newNickName) {
+        if (StringUtils.equalsIgnoreCase(oldNickName, newNickName)) {
+            return true;
+        }
+        return !userService.nickNameExists(newNickName);
+    }
+
+    @Override
+    public User getCurrent() {
+        RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
+        Principal principal = (Principal) request.getSession().getAttribute(User.PRINCIPAL_ATTRIBUTE_NAME);
+        if (principal != null) {
+            return userDao.find(principal.getId());
+        }
+        return null;
     }
 }

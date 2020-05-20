@@ -10,7 +10,7 @@
         treeSpid: -1,
         treeIdName: 'id',
         treePidName: 'parent',
-        elem: '#munu-table',
+        elem: '#menu-table',
         url: '/admin/menu/list/',
         page: false,
         cols: [[
@@ -39,11 +39,11 @@
     });
 
     $('#btn-expand').click(function () {
-        treetable.expandAll('#munu-table');
+        treetable.expandAll('#menu-table');
     });
 
     $('#btn-fold').click(function () {
-        treetable.foldAll('#munu-table');
+        treetable.foldAll('#menu-table');
     });
 
     //添加
@@ -64,7 +64,7 @@
     });
 
     //监听工具条
-    table.on('tool(munu-table)', function (obj) {
+    table.on('tool(menu-table)', function (obj) {
         var data = obj.data;
         var layEvent = obj.event;
 
