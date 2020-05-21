@@ -10,7 +10,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 
 /**
- * 配置 - 异步线程
+ * 配置 - 异步
  */
 @Configuration
 @EnableAsync
