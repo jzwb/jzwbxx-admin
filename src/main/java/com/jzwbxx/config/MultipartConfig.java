@@ -1,7 +1,6 @@
 package com.jzwbxx.config;
 
-import com.jzwbxx.common.Setting;
-import com.jzwbxx.util.SettingUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -12,13 +11,17 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @Configuration
 public class MultipartConfig {
 
+    @Value("${config.multipart.maxInMemorySize}")
+    private int maxInMemorySize;
+    @Value("${config.multipart.maxUploadSize}")
+    private int maxUploadSize;
+
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getCommonsMultipartResolver() {
-        Setting setting = SettingUtils.get();
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setDefaultEncoding("UTF-8");
-        multipartResolver.setMaxInMemorySize(setting.getMaxInMemorySize() * 1024 * 1024);
-        multipartResolver.setMaxUploadSize(setting.getMaxUploadSize() * 1024 * 1024);
+        multipartResolver.setMaxInMemorySize(maxInMemorySize * 1024 * 1024);
+        multipartResolver.setMaxUploadSize(maxUploadSize * 1024 * 1024);
         return multipartResolver;
     }
 }

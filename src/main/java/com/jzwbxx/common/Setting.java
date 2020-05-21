@@ -27,10 +27,6 @@ public class Setting {
 
     @Value("${siteUrl}")
     private String siteUrl;//网站网址
-    @Value("${maxInMemorySize}")
-    private Integer maxInMemorySize;//最大内存缓存(单位:M)
-    @Value("${maxUploadSize}")
-    private Integer maxUploadSize;//最大上传大小(单位:M)
     @Value("${uploadImageMaxSize}")
     private Integer uploadImageMaxSize;//上传图片大小限制(单位:M)
     @Value("${uploadImagePath}")
@@ -48,22 +44,6 @@ public class Setting {
 
     public void setSiteUrl(String siteUrl) {
         this.siteUrl = siteUrl;
-    }
-
-    public Integer getMaxInMemorySize() {
-        return maxInMemorySize;
-    }
-
-    public void setMaxInMemorySize(Integer maxInMemorySize) {
-        this.maxInMemorySize = maxInMemorySize;
-    }
-
-    public Integer getMaxUploadSize() {
-        return maxUploadSize;
-    }
-
-    public void setMaxUploadSize(Integer maxUploadSize) {
-        this.maxUploadSize = maxUploadSize;
     }
 
     public Integer getUploadImageMaxSize() {

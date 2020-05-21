@@ -1,6 +1,8 @@
 package com.jzwbxx.util;
 
 import com.jzwbxx.common.Setting;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -10,14 +12,16 @@ import java.net.URLDecoder;
  */
 public class PathUtils {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(PathUtils.class);
+
 	private static String ROOT_PATH = null;
 	private static String CLASS_PATH = null;
 
 	public static void init() {
 		try {
-			CLASS_PATH = Tools.class.getResource("./").getPath().replace("/com/zhifu/util/", "/");
+			CLASS_PATH = Tools.class.getResource("./").getPath().replace("/com/jzwbxx/util/", "/");
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.error("路径初始化异常", e);
 			initOtherMethod();
 		}
 		if (!CLASS_PATH.startsWith("/")) {
@@ -28,7 +32,7 @@ public class PathUtils {
 			CLASS_PATH = URLDecoder.decode(CLASS_PATH, "UTF-8");
 			ROOT_PATH = URLDecoder.decode(ROOT_PATH, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			LOGGER.error("路径初始化异常", e);
 		}
 	}
 
@@ -36,7 +40,7 @@ public class PathUtils {
 	 * 其他获取classes路径方法
 	 */
 	private static void initOtherMethod() {
-		CLASS_PATH = Tools.class.getResource("PathUtils.class").getPath().replace("/com/zhifu/util/PathUtils.class", "/");
+		CLASS_PATH = Tools.class.getResource("PathUtils.class").getPath().replace("/com/jzwbxx/util/PathUtils.class", "/");
 	}
 
 	/**

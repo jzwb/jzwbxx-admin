@@ -7,13 +7,18 @@ import com.jzwbxx.service.FileService;
 import com.jzwbxx.service.PluginService;
 import com.jzwbxx.util.FreemarkerUtils;
 import com.jzwbxx.util.SettingUtils;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +31,12 @@ import java.util.UUID;
 @Service
 public class FileServiceImpl implements FileService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileServiceImpl.class);
+
     @Autowired
     private PluginService pluginService;
+    @Resource(name = "taskExecutor")
+    private TaskExecutor taskExecutor;
 
     @Override
     public boolean isValid(FileInfo.FileType fileType, MultipartFile multipartFile) {
@@ -65,9 +74,9 @@ public class FileServiceImpl implements FileService {
             multipartFile.transferTo(tempFile);
             return baseUpload(fileType, tempFile, null, fileExtension, null, false);
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            LOGGER.error("上传文件异常", e);
         }
+        return null;
     }
 
     /**
@@ -111,7 +120,7 @@ public class FileServiceImpl implements FileService {
             String path = uploadPath + filename + "." + fileExtension;
             for (StoragePlugin storagePlugin : pluginService.getStoragePlugins(true)) {
                 if (async) {
-
+                    addTask(storagePlugin, path, file, fileExtension);
                 } else {
                     storagePlugin.upload(path, file, fileExtension);
                 }
@@ -121,5 +130,25 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 异步上传任务
+     *
+     * @param storagePlugin 存储插件
+     * @param path          路径
+     * @param file          文件
+     * @param fileExtension 文件扩展名
+     */
+    private void addTask(final StoragePlugin storagePlugin, final String path, final File file, final String fileExtension) {
+        taskExecutor.execute(() -> {
+            try {
+                storagePlugin.upload(path, file, fileExtension);
+            } finally {
+                if (file != null && file.exists() && file.isFile()) {
+                    FileUtils.deleteQuietly(file);
+                }
+            }
+        });
     }
 }

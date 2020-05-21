@@ -6,6 +6,8 @@ import com.jzwbxx.util.PathUtils;
 import com.jzwbxx.util.SettingUtils;
 import com.jzwbxx.util.Tools;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -18,6 +20,8 @@ import java.util.List;
  */
 @Component("filePlugin")
 public class FilePlugin extends StoragePlugin {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FilePlugin.class);
 
     @Override
     public String getName() {
@@ -58,7 +62,7 @@ public class FilePlugin extends StoragePlugin {
                 FileUtils.moveFile(file, destFile);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("本地存储文件异常", e);
         }
     }
 
