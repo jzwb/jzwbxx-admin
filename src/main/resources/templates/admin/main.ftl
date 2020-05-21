@@ -48,8 +48,19 @@
             </ul>
 
             <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
+                </li>
+                <li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
+                </li>
                 <li class="layui-nav-item layuimini-setting">
-                    <a class="login-out" href="javascript:;">退出登录</a>
+                    <a href="javascript:;">[@shiro.principal/]</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" class="login-out">退出登录</a>
+                        </dd>
+                    </dl>
                 </li>
                 <li class="layui-nav-item layuimini-select-bgcolor mobile layui-hide-xs" lay-unselect>
                     <a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>

@@ -1,5 +1,6 @@
 package com.jzwbxx.config;
 
+import com.jagregory.shiro.freemarker.ShiroTags;
 import com.jzwbxx.directive.FlashMessageDirective;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +22,7 @@ public class FreeMarkerConfig {
     public void setSharedVariable() {
         try {
             configuration.setSharedVariable("flashMessage", flashMessageDirective);
+            configuration.setSharedVariable("shiro", new ShiroTags());
         } catch (Exception e) {
             e.printStackTrace();
         }
